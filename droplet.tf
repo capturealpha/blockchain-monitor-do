@@ -11,15 +11,16 @@ resource "digitalocean_droplet" "monitor" {
     create = "30m"
     delete = "10m"
   }
-  user_data = templatefile("${abspath(path.root)}/monitor-cloud-init.yml", {
-    fqdn                 = "${var.prefix}-do.${var.root_domain}"
-    do_auth_token        = var.do_auth_token
-    prefix               = var.prefix
-    ssh_port             = var.ssh_port
-    ssh_key_1            = var.ssh_key_1
-    ssh_key_2            = var.ssh_key_2
-    caddy_user           = var.caddy_user
-    caddy_password       = var.caddy_password
+  user_data = templatefile("${abspath(path.root)}/cloud-init.yml", {
+    fqdn             = "${var.prefix}-do.${var.root_domain}"
+    do_token         = var.do_token
+    data_volume_name = var.data_volume_name
+    prefix           = var.prefix
+    ssh_port         = var.ssh_port
+    ssh_key_1        = var.ssh_key_1
+    ssh_key_2        = var.ssh_key_2
+    caddy_user       = var.caddy_user
+    caddy_password   = var.caddy_password
   })
   connection {
     type        = "ssh"
@@ -42,10 +43,10 @@ resource "digitalocean_droplet" "monitor" {
       EOF
     ]
   }
-  tags = ["${var.prefix}-node-${var.polygon_network_name}", "monitoring"]
+  tags = [var.prefix]
 }
 
 resource "digitalocean_volume_attachment" "data" {
-  droplet_id = digitalocean_droplet.polygon.id
+  droplet_id = digitalocean_droplet.monitor.id
   volume_id  = digitalocean_volume.data.id
 }

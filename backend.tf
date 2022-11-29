@@ -5,6 +5,6 @@ terraform {
     endpoint                    = "nyc3.digitaloceanspaces.com"
     region                      = "us-east-1"
     bucket                      = "terraform-ca-state"
-    key                         = "terraform.tfstate"
+    key                         = "terraform-monitor.tfstate"
   }
 }

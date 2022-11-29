@@ -38,7 +38,7 @@ scrape_configs:
             labels:
                 instance: monitoring
 
-    - job_name: 'heimdall'
+    - job_name: heimdall
       digitalocean_sd_configs:
         - port: 26660
         - authorization:

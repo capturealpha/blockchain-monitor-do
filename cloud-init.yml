@@ -24,6 +24,7 @@ write_files:
     - path: /etc/environment
       content: |
           FQDN="${fqdn}"
+          DO_TOKEN="${do_token}"
           DATA_VOLUME="/mnt/${data_volume_name}"
           CADDY_USER="${caddy_user}"
           CADDY_PASSWORD='${caddy_password}'

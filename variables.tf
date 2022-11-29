@@ -72,35 +72,35 @@ variable "alert_cpu_threshold" {
   default     = 95
 }
 
-variable "monitor_droplet_size" {
+variable "droplet_size" {
   description = "The unique slug that indentifies the type of monitor droplet. You can find a list of available slugs on https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes"
   default     = "s-4vcpu-8gb-amd"
 }
 
-variable "monitor_droplet_region" {
+variable "droplet_region" {
   description = "The region to start the monitor droplet in"
 }
 
-variable "monitor_droplet_name" {
+variable "droplet_name" {
   description = "The monitor droplet name"
 }
 
-variable "monitor_droplet_image" {
+variable "droplet_image" {
   description = "The monitor droplet OS image"
   default     = "ubuntu-22-04-x64"
 }
 
-variable "monitor_data_volume_size" {
+variable "data_volume_size" {
   description = "The monitor data volume size"
   default     = 100
 }
 
-variable "monitor_data_volume_name" {
+variable "data_volume_name" {
   description = "The monitor data volume name"
   default     = "data"
 }
 
-variable "monitor_data_volume_fs_type" {
+variable "data_volume_fs_type" {
   description = "The polygon data volume filesystem type (xfs or ext4) for the block storage volume"
   default     = "xfs"
 }
